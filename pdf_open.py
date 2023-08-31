@@ -7,7 +7,7 @@ import datetime
 def pyMuPDF_fitz(pdfPath, imagePath):
     startTime_pdf2img = datetime.datetime.now()  # 开始时间
 
-    print("imagePath="+imagePath)
+    print("imagePath=" + imagePath)
     pdfDoc = fitz.open(pdfPath)
     for pg in range(pdfDoc.page_count):
         page = pdfDoc[pg]
@@ -22,11 +22,11 @@ def pyMuPDF_fitz(pdfPath, imagePath):
         if not os.path.exists(imagePath):  # 判断存放图片的文件夹是否存在
             os.makedirs(imagePath)  # 若图片文件夹不存在就创建
 
-        pix.save(imagePath+'/'+'images_%s.png' % (pg+1))   # 将图片写入指定的文件夹内
+        pix.save(imagePath + '/' + 'images_%s.png' % (pg + 1))  # 将图片写入指定的文件夹内
 
     endTime_pdf2img = datetime.datetime.now()  # 结束时间
-    print('pdf2img时间=', (endTime_pdf2img - startTime_pdf2img).seconds)
-    print('pdf页数=%s')
+    print('pdf2img时间=', (endTime_pdf2img - startTime_pdf2img))
+    print('pdf页数=', (pg + 1))
 
 
 if __name__ == "__main__":
